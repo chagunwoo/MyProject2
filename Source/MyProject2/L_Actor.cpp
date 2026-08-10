@@ -21,7 +21,24 @@ void AL_Actor::BeginPlay()
 {
 	Super::BeginPlay();
 	StartLocation = GetActorLocation();
+	GetWorld()->GetTimerManager().SetTimer(
+		MoveTimerHandle, 
+		this, 
+		&AL_Actor::RandomMove, 
+		3.0f, 
+		true
+	);
+
+
+
 }
+
+void AL_Actor::RandomMove()
+{
+	SetActorHiddenInGame(!IsHidden());
+
+}
+
 
 // Called every frame
 void AL_Actor::Tick(float DeltaTime)
