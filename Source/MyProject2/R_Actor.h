@@ -4,16 +4,16 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "Actor_R.generated.h"
+#include "R_Actor.generated.h"
 
 UCLASS()
-class MYPROJECT2_API AActor_R : public AActor
+class MYPROJECT2_API AR_Actor : public AActor
 {
 	GENERATED_BODY()
 	
 public:	
 	// Sets default values for this actor's properties
-	AActor_R();
+	AR_Actor();
 
 protected:
 	// Called when the game starts or when spawned
@@ -22,10 +22,11 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
 	UStaticMeshComponent* Mesh;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Rotation")
 	FRotator RotationSpeed;
+
+
 };
