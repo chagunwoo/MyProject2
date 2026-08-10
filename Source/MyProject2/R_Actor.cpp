@@ -25,7 +25,5 @@ void AR_Actor::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 	AddActorLocalRotation(RotationSpeed * DeltaTime);
-
-
 }
 
