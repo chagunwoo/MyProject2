@@ -36,8 +36,8 @@ void AL_Actor::BeginPlay()
 void AL_Actor::RandomMove()
 {
 	SetActorHiddenInGame(!IsHidden());
-
 }
+
 
 
 // Called every frame
