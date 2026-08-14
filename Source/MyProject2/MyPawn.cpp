@@ -8,6 +8,13 @@ AMyPawn::AMyPawn()
 {
  	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
+	Capsule = CreateDefaultSubobject<UCapsuleComponent>(TEXT("Capsule"));
+	RootComponent = Capsule;
+	
+	Mesh = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("SkeletalMesh"));
+	Mesh->SetupAttachment(Capsule);
+	Mesh->SetSimulatePhysics(false);
+	
 	SpringArm = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpringArm"));
 	SpringArm->SetupAttachment(RootComponent);
 	SpringArm->TargetArmLength = 300.0f;
@@ -17,13 +24,6 @@ AMyPawn::AMyPawn()
 	Camera->SetupAttachment(SpringArm, USpringArmComponent::SocketName);
 	Camera->bUsePawnControlRotation = false;
 
-	Mesh = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("SkeletalMesh"));
-	Mesh->SetupAttachment(Capsule);
-	Mesh->SetSimulatePhysics(false);
-
-
-	Capsule = CreateDefaultSubobject<UCapsuleComponent>(TEXT("Capsule"));
-	RootComponent = Capsule;
 }
 
 
