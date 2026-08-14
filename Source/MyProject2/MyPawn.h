@@ -8,8 +8,12 @@
 #include "Components/SkeletalMeshComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "Camera/CameraComponent.h"
-
 #include "MyPawn.generated.h"
+
+class UFloatingPawnMovement;
+struct FInputActionValue;
+
+
 
 UCLASS()
 class MYPROJECT2_API AMyPawn : public APawn
@@ -23,14 +27,38 @@ public:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+	UFUNCTION()
+	void Move(const FInputActionValue& Value);
+	UFUNCTION()
+	void StartJump(const FInputActionValue& Value);
+	UFUNCTION()
+	void Look(const FInputActionValue& Value);
+
+	float CameraPitch = 0.0f;
+	float CameraYaw = 0.0f;
+	UPROPERTY(EditAnywhere, Category = "Camera")
+	float LookSensitivity = 1.0f;
+
+	UPROPERTY(EditAnywhere, Category = "Camera")
+	float MinPitch = -80.0f;
+
+	UPROPERTY(EditAnywhere, Category = "Camera")
+	float MaxPitch = 80.0f;
+
+
+	UPROPERTY(EditAnywhere, Category = "Camera")
+	float MinYaw = -80.0f;
+
+	UPROPERTY(EditAnywhere, Category = "Camera")
+	float MaxYaw = 80.0f;
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	// Called to bind functionality to input
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
-
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Movement")
+	UFloatingPawnMovement* MovementComponent;
 	//Ä¸½¶ ÄÄÆ÷³ÍÆ®
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Component")
 	UCapsuleComponent* Capsule;
