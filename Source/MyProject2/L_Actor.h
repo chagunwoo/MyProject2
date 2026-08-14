@@ -22,18 +22,21 @@ protected:
 	FTimerHandle MoveTimerHandle;
 	void RandomMove();
 public:	
-	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-	
+
+	//메쉬
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
 	UStaticMeshComponent* Mesh;
 
+	//움직임 속도
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movement")
 	FVector MovementSpeed;
 
+	//최댓값
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movement")
 	FVector MaxRange;
 
+	//최솟값
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movement")
 	FVector minimum;
 };
