@@ -29,34 +29,44 @@ protected:
 	virtual void BeginPlay() override;
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+	//이동
 	UFUNCTION()
 	void Move(const FInputActionValue& Value);
+
+	//점프
 	UFUNCTION()
 	void StartJump(const FInputActionValue& Value);
+
+	//카메라이동 
 	UFUNCTION()
 	void Look(const FInputActionValue& Value);
 
 	float CameraPitch = 0.0f;
 	float CameraYaw = 0.0f;
+
+	//카메라이동감도
 	UPROPERTY(EditAnywhere, Category = "Camera")
 	float LookSensitivity = 1.0f;
-
+	
+	//최소 Pitch값
 	UPROPERTY(EditAnywhere, Category = "Camera")
 	float MinPitch = -80.0f;
 
+	//최대 Pitch값
 	UPROPERTY(EditAnywhere, Category = "Camera")
 	float MaxPitch = 80.0f;
 
-
+	//최소 Yaw값
 	UPROPERTY(EditAnywhere, Category = "Camera")
 	float MinYaw = -80.0f;
 
+	//최대 Yaw값
 	UPROPERTY(EditAnywhere, Category = "Camera")
 	float MaxYaw = 80.0f;
 public:	
-	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	//무브먼트 컴포넌트
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Movement")
 	UFloatingPawnMovement* MovementComponent;
 	//캡슐 컴포넌트

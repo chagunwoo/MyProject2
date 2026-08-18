@@ -15,6 +15,8 @@ class MYPROJECT2_API AMyPlayerController : public APlayerController
 	GENERATED_BODY()
 public:
 	AMyPlayerController();
+
+	//인풋 개채 지정
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Input")
 	UInputMappingContext* InputMappingContext;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Input")
